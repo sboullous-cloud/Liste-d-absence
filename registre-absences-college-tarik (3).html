@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Registre d'absences – 1re année – Collège Tarik</title>
+<style>
+:root{--bg:#eef3fb;--card:#fff;--tx:#10224a;--mu:#5a6a8c;--pr:#2f4fd8;--pr2:#1b2f8f;--ok:#1f9d4d;--ko:#d93a3a;--lt:#e8890c;--bd:#d6dfef;--hd:#e6ecf8}
+@media(prefers-color-scheme:dark){:root{--bg:#0c1221;--card:#151e36;--tx:#e8edfa;--mu:#9aa9cb;--pr:#7c93ff;--pr2:#2b3a78;--bd:#28345a;--hd:#1d2847}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:"Trebuchet MS","Segoe UI",Tahoma,sans-serif;padding-bottom:40px}
+.hero{background:linear-gradient(120deg,var(--pr2),var(--pr),#6f42c1);background-size:200% 200%;animation:bg 10s ease infinite;color:#fff;padding:22px 18px;position:relative;overflow:hidden}
+@keyframes bg{50%{background-position:100% 50%}}
+.hero-in{max-width:1200px;margin:auto;display:flex;gap:18px;align-items:center;flex-wrap:wrap;position:relative}
+.hero svg{width:150px;flex:none;animation:in .8s}
+@keyframes in{from{opacity:0;transform:translateY(20px)}}
+.hero h1{margin:0 0 4px;font-size:clamp(20px,3.4vw,32px)}
+.hero p{margin:2px 0;opacity:.92;font-size:14px}
+.fl{position:absolute;font-size:30px;opacity:.3;animation:fl 6s ease-in-out infinite}
+@keyframes fl{50%{transform:translateY(-14px) rotate(8deg)}}
+.sun{transform-origin:118px 26px;animation:sp 14s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}
+.flag{transform-origin:65px 9px;animation:wv 1.6s ease-in-out infinite}@keyframes wv{50%{transform:skewY(10deg)}}
+main{max-width:1200px;margin:auto;padding:0 12px}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+button{font:inherit;cursor:pointer;border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:8px 13px;border-radius:10px;transition:.15s}
+button:hover{transform:translateY(-2px);border-color:var(--pr)}
+button.on{background:var(--pr);color:#fff;border-color:var(--pr)}
+.pdf{background:var(--ko);color:#fff;border-color:var(--ko);font-weight:700}
+.pdf2{background:var(--ok);color:#fff;border-color:var(--ok);font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:10px 0}
+.st{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:10px 14px;border-left:6px solid var(--pr);animation:in .5s backwards}
+.st b{font-size:28px;display:block}.st span{color:var(--mu);font-size:13px}
+.st.p{border-left-color:var(--ok)}.st.a{border-left-color:var(--ko)}.st.r{border-left-color:var(--lt)}
+.nav{display:flex;align-items:center;gap:10px;justify-content:space-between;flex-wrap:wrap}
+.nav h2{margin:0;font-size:24px;text-align:center;flex:1}
+.ds{display:flex;gap:6px;overflow-x:auto;padding:4px 2px 10px}
+.dd{min-width:48px;padding:6px 4px;text-align:center;position:relative}
+.dd b{display:block;font-size:17px}.dd small{font-size:10px;opacity:.8}
+.dd.dot::after{content:"";position:absolute;top:4px;right:5px;width:7px;height:7px;border-radius:50%;background:var(--ok)}
+.page{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px;margin-top:8px}
+.flip{animation:flip .55s cubic-bezier(.2,.8,.2,1)}
+@keyframes flip{from{opacity:0;transform:perspective(900px) rotateY(-16deg) translateX(30px)}to{opacity:1;transform:none}}
+.tw{overflow:auto;max-height:72vh;border-radius:8px}
+table{border-collapse:separate;border-spacing:0;font-size:14px;width:100%}
+th,td{border-bottom:1px solid var(--bd);border-left:1px solid var(--bd);text-align:center;padding:0 4px;height:34px;min-width:44px}
+th{background:var(--hd);position:sticky;top:0;z-index:2;font-size:13px}
+thead tr:nth-child(2) th{top:34px}
+th.mt{background:#fff3c4;color:#8a5a00}th.sr{background:#ffd9c2;color:#9a3d00}
+th.sh{cursor:pointer}th.sh:hover{background:var(--pr);color:#fff}
+.sep{border-left:3px solid var(--pr)!important}
+td.n,th.n{position:sticky;left:0;z-index:3;min-width:190px;text-align:start;padding:0 10px;background:var(--card);white-space:nowrap}
+th.n{background:var(--hd);z-index:4}
+td.g{position:sticky;left:0;text-align:start;padding:0 12px;font-weight:700;background:var(--hd);color:var(--pr);height:28px}
+td.n b{color:var(--mu);display:inline-block;width:24px}
+tr:hover td.n{background:var(--hd)}
+td.c{cursor:pointer;user-select:none;font-weight:700;font-size:16px}
+td.c:hover{background:var(--hd)}
+td.cp{background:#d6f3df;color:var(--ok)}td.ca{background:#fbd9d9;color:var(--ko)}td.cr{background:#fde8c6;color:var(--lt)}
+td.pop{animation:pop .3s}@keyframes pop{50%{transform:scale(1.5)}}
+td.ta{color:var(--ko);font-weight:700}td.tr{color:var(--lt);font-weight:700}
+td.w{min-width:200px}.bar{position:relative;height:20px;background:var(--hd);border-radius:10px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--ok),#7ad37a);animation:gr 1s ease-out}
+@keyframes gr{from{width:0!important}}
+.bar em{position:absolute;inset:0;font-style:normal;font-size:12px;line-height:20px;font-weight:700}
+.leg{font-size:13px;color:var(--mu);margin:8px 2px}
+footer{text-align:center;color:var(--mu);font-size:13px;margin-top:18px}
+.ph{display:none}
+input{font:inherit;padding:8px 12px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx)}
+#pa{display:none}
+.cf{position:fixed;top:-30px;font-size:24px;animation:cf 1.6s linear forwards;z-index:99;pointer-events:none}
+@keyframes cf{to{transform:translateY(110vh) rotate(360deg)}}
+#toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,80px);background:var(--pr2);color:#fff;padding:10px 18px;border-radius:20px;transition:.35s;z-index:99}
+#toast.show{transform:translate(-50%,0)}
+dialog{border:1px solid var(--bd);border-radius:16px;background:var(--card);color:var(--tx);padding:20px;width:min(440px,92vw);animation:in .35s}
+dialog::backdrop{background:rgba(10,20,50,.55);backdrop-filter:blur(3px)}
+fieldset{border:1px solid var(--bd);border-radius:12px;margin:0 0 10px;display:grid;gap:6px}legend{font-weight:700;color:var(--pr);padding:0 6px}
+label{cursor:pointer;padding:5px 8px;border-radius:8px}label:hover{background:var(--hd)}
+input[type=radio]{padding:0;margin-right:8px;accent-color:var(--pr)}
+.cover{text-align:center;padding-top:50px}.cover h1{font-size:36px;margin:6px 0}.cover table{margin:20px auto;width:70%}
+@media print{dialog{display:none!important}}
+@media print{
+ @page{size:A4 portrait;margin:8mm}
+ :root{--bg:#fff;--card:#fff;--tx:#000;--mu:#444;--bd:#999;--hd:#e8e8e8}
+ body{background:#fff;padding:0}
+ .hero,.row,.stats,.nav,.ds,.leg,footer,.cf,#toast{display:none!important}
+ .page,.tw{border:0;padding:0;max-height:none;overflow:visible}
+ .ph{display:block;text-align:center;margin-bottom:6px;font-size:13px}.ph h3{margin:0 0 2px;font-size:16px}
+ table{font-size:10px}th,td{height:18px;min-width:0}td.n,th.n,td.g{position:static;min-width:130px}th{position:static}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ body.all main>*:not(#pa){display:none!important}
+ body.all #pa{display:block}
+ #pa section{page-break-after:always;break-after:page}
+ .flip,.bar i{animation:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+<header class="hero">
+ <span class="fl" style="left:3%;top:12px">🎒</span><span class="fl" style="right:8%;top:10px;animation-delay:1s">📚</span><span class="fl" style="right:24%;bottom:6px;animation-delay:2s">✏️</span><span class="fl" style="left:46%;bottom:4px;animation-delay:3s">🔔</span>
+ <div class="hero-in">
+  <svg viewBox="0 0 150 110" aria-hidden="true"><g class="sun"><circle cx="118" cy="26" r="12" fill="#ffd166"/><circle cx="118" cy="26" r="19" fill="none" stroke="#ffd166" stroke-width="4" stroke-dasharray="3 7"/></g><rect x="20" y="48" width="90" height="52" fill="#fff"/><path d="M12 50L65 18l53 32z" fill="#ff9b85"/><rect x="55" y="72" width="20" height="28" rx="3" fill="#2f4fd8"/><rect x="28" y="60" width="18" height="14" fill="#9ec5ff"/><rect x="84" y="60" width="18" height="14" fill="#9ec5ff"/><path d="M65 18V4" stroke="#fff" stroke-width="3"/><path class="flag" d="M65 4h16l-5 5 5 5H65z" fill="#e03131"/><rect x="0" y="100" width="150" height="6" rx="3" fill="#7ad37a"/></svg>
+  <div>
+   <h1>Registre d'absences</h1>
+   <p>Collège Tarik · 1re année · Année scolaire 2026/2027</p>
+   <p>8 séances par jour : ☀️ 4 le matin · 🌇 4 en soirée</p>
+   <p>Réalisé par <b>Ismail BOULLOUS</b> · 6 classes</p>
+  </div>
+ </div>
+</header>
+<main>
+ <div class="row" id="cls"></div>
+ <div class="row" id="vws"></div>
+ <div class="stats" id="stats"></div>
+ <div class="row">
+  <button id="allp">✓ Tout présent (jour)</button>
+  <button id="keep">✓ Garder les ✓, effacer ✗ et R (jour)</button>
+  <button id="clr">Effacer le jour</button>
+  <button id="clrm">Effacer le mois</button>
+  <button class="pdf" id="pdf">⬇ Télécharger PDF</button>
+ </div>
+ <div class="nav"><button id="prev">◀</button><h2 id="mt"></h2><button id="next">▶</button></div>
+ <div class="row" id="mos"></div>
+ <div class="ds" id="ds"></div>
+ <div class="page" id="pg"><div class="ph" id="ph"></div><div class="tw" id="tw"></div></div>
+ <div class="leg">Cliquez sur une case : <b style="color:var(--ok)">✓ présent</b> → <b style="color:var(--ko)">✗ absent</b> → <b style="color:var(--lt)">R retard</b> → vide. Cliquez sur « S1…S8 » pour mettre toute la classe présente à cette séance. Les points verts indiquent les jours déjà remplis. Enregistrement automatique dans le navigateur.</div>
+ <div id="pa"></div>
+</main>
+<dialog id="dlg"><h3 style="margin:0 0 4px">⬇ Télécharger en PDF</h3><p class="leg" style="margin:0 0 12px">Un seul fichier PDF. Dans la fenêtre d'impression, choisissez « Enregistrer au format PDF ».</p>
+<fieldset><legend>Classes</legend><label><input type="radio" name="sc" value="all" checked> Toutes les classes (1.1 à 1.6)</label><label><input type="radio" name="sc" value="one"> Seulement la classe affichée</label></fieldset>
+<fieldset><legend>Contenu</legend><label><input type="radio" name="ct" value="year" checked> 🏆 Bilan de l'année</label><label><input type="radio" name="ct" value="month"> 📊 Bilan du mois affiché</label><label><input type="radio" name="ct" value="daysm"> 📅 Tous les jours du mois (1 par page)</label><label><input type="radio" name="ct" value="day"> 🗓️ Le jour affiché</label></fieldset>
+<div class="row" style="justify-content:flex-end;margin:14px 0 0"><button id="cancel">Annuler</button><button class="pdf" id="go">Générer le PDF</button></div></dialog>
+<div id="toast"></div>
+<footer>© Ismail BOULLOUS – Collège Tarik – 1re année</footer>
+<script>
+const N=[
+"نجمان خديجة|ضهوري أريج|لقيبي فردوس|آيت بال واعلي عمران|حاضر سعد|ديراع جودية|دنداني دينا|كمصي رجاء|رانية الدهبي|ايت موليد حياة|سيا عثمان|بنجامع كلثوم|لخضر يحيى|شفيفيك إسماعيل|لغليمي علياء|ميراز فاطمة الزهراء|الزوين أحلام|اغلاد معاد|السبع مودة|ابن احمد دعاء|ساوفي ايمان|هريدو يحيى|حر الزكية اسماعيل|ناجيم الهام|مسامح ريم|الراحلي سفيان|شراد مروة|خيراني هدى|متابر محمد|غيات علاء|الطاهري محمد امين",
+"البركة امير|زهيد آدم|العسال عبد الرحمان|ساجد إدريس|شاكر وصال|صفوري سامي|بلعادل ريحانة|الحنصالي أسامة|هنور ريان|عمار كوثر|خشاني رضى|الشوقي شيماء|ازعري مالك|الملوك فاطمة الزهراء|صبحي وئام|دامية روميساء|التباري محمد سامي|السبطي شروق|بادي مالك|زيزين سعد|العامري اية|خليل ريان|سينى رياض|مرموشا أنس|مرفوقي سيرين|غازادي اسراء|فتحان مسلم|زايا اسراء|اصنايبي نور",
+"ابحير عمر|بلهاشمي يوسف|البرغاز يوسف|الأنصاري أمنية|ياسر حنافي|إسراء أديب|اوديني أميمة|أمساعد نصر الدين|فرحان مالك|دهوب محمد|بلفول محمد أمين|الزعيم كريم|فكادي جنات|امهيضرة جنات|عنوز علي|مويري محمد ايمن|بوقدير انس|فاضل ضحى|البرقاوي عبد الصمد|شرفي خديجة|بن الطاهر شعيب|وطفي زهير|حيمر ياسمين|بنبركة احمد|الفلاحي فردوس|برطال الياس|بنبركة اسماعيل|أمساعد سيف الدين",
+"زكري منال|وجهي مروة|السلامي نزار|شكيبي أميرة|مستفيد معتز|دكي ريان|ريان كرام|التونسي محمد أمين|نصيح عمران|ضرضور مريم|عقيلة نهيلة|كامل ابراهيم|العربان اسراء|حلبي أروى|خاي خليل ابراهيم|فنة سيف الدين|الحنصالي ابرهيم|سعين هبة|رضواني هند|مطهور رحاب|انجم أمير|جمالي الاء|طالبي يوسف|مساعد يوسف|رضيف أنس|اعدجو الياس|لحنيش اسلام|مراد حفصة",
+"ماضي شهيناز|إسلامي عبد العالي|ضنين هيتم|مري محسن|اعسيرو وليد|يحيى الطير|دامية عمران|شيبي احلام|ايت الشيخ دعاء|العادة ريان|موهوب هناء|اشوبان علية|قاسح يوسف|مفيد مهدي|اضمان ياسمين|لخويلي محمد اسلام|غاريب يحيى|زهراوي وئام|بكرون الاء|عاطي محمد لقمان|مرشيد نديرة|مسكاوي اسراء|لمعمري زينب|اشهيب فاطمة الزهراء|زهيد اميرة|بوشان ادم|الخيام هجر|الضويف يوسف|أكنيش عبد النور",
+"زكري مالك|زيان سفيان|عقاوي مروة|عبد الله بن اشحوذ|سنان أزول|الغربي زهير|العبار جنات|لسباطي نعمة|مري مالك|الكميري انصاف|ايت شجيع نور عائشة|المكاني اية|الشرادي عمران|أبطاد صفاء|خليفي نور|بهمدن زكرياء|رجحاوي علاء|نيت القاضي رحاب|لعيسل ياسمين|اشرع محمد|كعلي محمد أمين|رضيع إيناس|اوحدو آية|البخاري محمد|مالك يوسف|النظيف محمد|ليخيي ياسمين|زيون ايمن|شافع دعاء|الفاضلي حفصة|مزين سوسن|فريخ محمد امين|ناجي احمد طه"
+].map(s=>s.split("|"));
+// Filles : numéros (dans la liste d'origine) des filles de chaque classe
+const F=[[1,2,3,6,7,8,9,10,12,15,16,17,19,20,21,24,25,27,28],[5,7,10,12,14,15,16,18,21,25,26,28,29],[4,6,7,13,14,18,20,23,25],[1,2,4,10,11,13,14,18,19,20,22,28],[1,8,9,11,12,15,18,19,21,22,23,24,25,27],[3,7,8,10,11,12,14,15,18,19,22,23,27,29,30,31]].map(a=>new Set(a));
+const MO=["Septembre","Octobre","Novembre","Décembre","Janvier","Février","Mars","Avril","Mai","Juin"],WD=["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"],SY=["","✓","✗","R"],CL=["","cp","ca","cr"];
+const md=i=>new Date(i>3?2027:2026,(8+i)%12,1);
+const lab=i=>MO[i]+" "+md(i).getFullYear();
+function days(m){const q=md(m),n=new Date(q.getFullYear(),q.getMonth()+1,0).getDate(),o=[];for(let x=1;x<=n;x++){const w=new Date(q.getFullYear(),q.getMonth(),x).getDay();if(w)o.push({d:x,w})}return o}
+let S={};try{S=JSON.parse(localStorage.getItem("abs2627b")||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem("abs2627b",JSON.stringify(S))}catch(e){}};
+const K=(c,m,i,d,s)=>[c,m,i,d,s].join(".");
+const $=id=>document.getElementById(id);
+let c=0,m=(new Date().getMonth()+4)%12,d=0,vw="day";if(m>9)m=0;
+const GR=c=>[["Filles 👧",1],["Garçons 👦",0]].map(([g,f])=>[g,N[c].map((_,i)=>i).filter(i=>F[c].has(i+1)==!!f)]);
+const day=(c,m,i,dd)=>{let p=0,a=0,r=0;for(let s=0;s<8;s++){const x=S[K(c,m,i,dd,s)]|0;x==1?p++:x==2?a++:x==3&&r++}return[p,a,r]};
+const add=(t,q)=>[t[0]+q[0],t[1]+q[1],t[2]+q[2]];
+const mon=(c,m,i)=>days(m).reduce((t,x)=>add(t,day(c,m,i,x.d)),[0,0,0]);
+function dayTbl(c,m,dd){let h='<table><thead><tr><th class="n" rowspan="2">Nom et prénom</th><th colspan="4" class="mt">☀️ Matin</th><th colspan="4" class="sr">🌇 Soirée</th><th rowspan="2">Abs</th><th rowspan="2">Ret</th></tr><tr>';
+for(let s=0;s<8;s++)h+=`<th class="sh${s==4?' sep':''}" data-s="${s}" title="Cliquer : tous présents">S${s+1}</th>`;
+h+="</tr></thead><tbody>";
+GR(c).forEach(([g,L])=>{h+=`<tr><td class="g" colspan="11">${g} · ${L.length}</td></tr>`;L.forEach((i,j)=>{let t="";for(let s=0;s<8;s++){const x=S[K(c,m,i,dd,s)]|0;t+=`<td class="c ${CL[x]}${s==4?' sep':''}" data-s="${s}">${SY[x]}</td>`}const q=day(c,m,i,dd);h+=`<tr data-i="${i}"><td class="n"><b>${j+1}</b>${N[c][i]}</td>${t}<td class="ta">${q[1]}</td><td class="tr">${q[2]}</td></tr>`})});return h+"</tbody></table>"}
+function sumTbl(c,m){let h='<table><thead><tr><th class="n">Nom et prénom</th><th>✓</th><th>✗</th><th>R</th><th>Taux de présence</th></tr></thead><tbody>';
+GR(c).forEach(([g,L])=>{h+=`<tr><td class="g" colspan="5">${g} · ${L.length}</td></tr>`;L.forEach((i,j)=>{const[p,a,r]=mon(c,m,i),T=p+a+r,k=T?Math.round(100*p/T):0;h+=`<tr><td class="n"><b>${j+1}</b>${N[c][i]}</td><td>${p}</td><td class="ta">${a}</td><td class="tr">${r}</td><td class="w"><div class="bar"><i style="width:${k}%"></i><em>${T?k+"%":"–"}</em></div></td></tr>`})});return h+"</tbody></table>"}
+function yearTbl(c){let h='<table><thead><tr><th class="n">Nom et prénom (absences par mois)</th>'+MO.map(x=>`<th>${x.slice(0,3)}.</th>`).join("")+"<th>Total ✗</th><th>Total R</th></tr></thead><tbody>";
+GR(c).forEach(([g,L])=>{h+=`<tr><td class="g" colspan="13">${g} · ${L.length}</td></tr>`;L.forEach((i,j)=>{let A=0,R=0,t="";MO.forEach((_,k)=>{const q=mon(c,k,i);A+=q[1];R+=q[2];t+=`<td>${q[1]||"·"}</td>`});h+=`<tr><td class="n"><b>${j+1}</b>${N[c][i]}</td>${t}<td class="ta">${A}</td><td class="tr">${R}</td></tr>`})});return h+"</tbody></table>"}
+const title=()=>vw=="day"?WD[new Date(md(m).getFullYear(),md(m).getMonth(),d).getDay()]+" "+d+" "+lab(m):vw=="month"?"Bilan de "+lab(m):"Bilan de l'année 2026/2027";
+const head=(t,cc=c)=>`<h3>Collège Tarik – 1re année – 1.${cc+1}</h3>${t} · Réalisé par Ismail BOULLOUS`;
+function anim(el,to,suf){const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/600);el.textContent=Math.round(to*k)+(suf||"");if(k<1)requestAnimationFrame(f)})(t0)}
+function stats(){let t=[0,0,0];N[c].forEach((_,i)=>{t=add(t,vw=="day"?day(c,m,i,d):vw=="month"?mon(c,m,i):MO.reduce((u,_,k)=>add(u,mon(c,k,i)),[0,0,0]))});
+const T=t[0]+t[1]+t[2],rate=T?Math.round(100*t[0]/T):0;
+$("stats").innerHTML=`<div class="st"><b>${N[c].length}</b><span>Élèves · ${F[c].size} filles · ${N[c].length-F[c].size} garçons</span></div><div class="st p"><b data-v="${t[0]}">0</b><span>Présences (séances)</span></div><div class="st a"><b data-v="${t[1]}">0</b><span>Absences (séances)</span></div><div class="st r"><b data-v="${t[2]}">0</b><span>Retards</span></div><div class="st"><b data-v="${rate}" data-s="%">0</b><span>Taux de présence</span></div>`;
+document.querySelectorAll("#stats [data-v]").forEach(e=>anim(e,+e.dataset.v,e.dataset.s))}
+function render(flip){
+const D=days(m);if(!D.some(x=>x.d==d)){const t=new Date();d=t.getMonth()==md(m).getMonth()&&t.getFullYear()==md(m).getFullYear()&&D.some(x=>x.d==t.getDate())?t.getDate():D[0].d}
+$("cls").innerHTML=N.map((_,i)=>`<button class="${i==c?'on':''}" data-c="${i}">1.${i+1}</button>`).join("");
+$("vws").innerHTML=[["day","📅 Jour (8 séances)"],["month","📊 Bilan du mois"],["year","🏆 Bilan de l'année"]].map(([k,t])=>`<button class="${k==vw?'on':''}" data-w="${k}">${t}</button>`).join("");
+$("mos").innerHTML=MO.map((_,i)=>`<button class="${i==m?'on':''}" data-m="${i}">${MO[i].slice(0,4)}.</button>`).join("");
+const used=new Set();Object.keys(S).forEach(k=>{const a=k.split(".");if(a[0]==c&&a[1]==m)used.add(+a[3])});
+$("ds").style.display=vw=="day"?"":"none";
+$("ds").innerHTML=D.map(x=>`<button class="dd ${x.d==d?'on':''}${used.has(x.d)?' dot':''}" data-d="${x.d}"><b>${x.d}</b><small>${WD[x.w].slice(0,3)}</small></button>`).join("");
+["allp","keep","clr"].forEach(i=>$(i).style.display=vw=="day"?"":"none");
+$("mt").textContent=title()+" · 1."+(c+1);$("ph").innerHTML=head(title());
+$("tw").innerHTML=vw=="day"?dayTbl(c,m,d):vw=="month"?sumTbl(c,m):yearTbl(c);
+if(flip){const p=$("pg");p.classList.remove("flip");void p.offsetWidth;p.classList.add("flip")}
+stats()}
+function toast(t){const e=$("toast");e.textContent=t;e.classList.add("show");setTimeout(()=>e.classList.remove("show"),1800)}
+function fx(){for(let i=0;i<18;i++){const e=document.createElement("span");e.className="cf";e.textContent=["🎉","✨","⭐","🎈"][i%4];e.style.cssText=`left:${Math.random()*100}vw;animation-delay:${Math.random()*.4}s`;document.body.appendChild(e);setTimeout(()=>e.remove(),2200)}}
+const eachDay=f=>N[c].forEach((_,i)=>{for(let s=0;s<8;s++)f(K(c,m,i,d,s))});
+document.addEventListener("click",e=>{
+const b=e.target.closest("button"),td=e.target.closest("#tw td.c"),th=e.target.closest("#tw th.sh");
+if(td){const r=td.parentNode,k=K(c,m,+r.dataset.i,d,+td.dataset.s);let x=((S[k]|0)+1)%4;if(x)S[k]=x;else delete S[k];
+td.className="c "+CL[x]+(td.dataset.s==4?" sep":"")+" pop";td.textContent=SY[x];r.querySelector(".ta").textContent=r.querySelectorAll(".ca").length;r.querySelector(".tr").textContent=r.querySelectorAll(".cr").length;save();stats();return}
+if(th){const s=+th.dataset.s;N[c].forEach((_,i)=>{const k=K(c,m,i,d,s);if(!S[k])S[k]=1});save();render();toast("Séance S"+(s+1)+" : tous présents ✓");return}
+if(!b)return;
+if(b.dataset.c){c=+b.dataset.c;render(1)}
+else if(b.dataset.m){m=+b.dataset.m;render(1)}
+else if(b.dataset.d){d=+b.dataset.d;render(1)}
+else if(b.dataset.w){vw=b.dataset.w;render(1)}
+else if(b.id=="prev"){m=(m+9)%10;render(1)}
+else if(b.id=="next"){m=(m+1)%10;render(1)}
+else if(b.id=="allp"){eachDay(k=>{if(!S[k])S[k]=1});save();render();fx();toast("Tout le monde est présent 🎉")}
+else if(b.id=="keep"){if(confirm("Garder les ✓ et effacer les ✗ et R de ce jour ?")){eachDay(k=>{if(S[k]&&S[k]!=1)delete S[k]});save();render(1);toast("✗ et R effacés")}}
+else if(b.id=="clr"){if(confirm("Effacer toutes les cases de ce jour ?")){eachDay(k=>delete S[k]);save();render(1)}}
+else if(b.id=="clrm"){if(confirm("Effacer toutes les données de ce mois pour cette classe ?")){N[c].forEach((_,i)=>days(m).forEach(x=>{for(let s=0;s<8;s++)delete S[K(c,m,i,x.d,s)]}));save();render(1)}}
+else if(b.id=="pdf"){$("dlg").showModal()}
+else if(b.id=="cancel"){$("dlg").close()}
+else if(b.id=="go"){const q=n=>document.querySelector("input[name="+n+"]:checked").value,sc=q("sc"),ct=q("ct"),CS=sc=="all"?N.map((_,i)=>i):[c],dn=x=>WD[x.w]+" "+x.d+" "+lab(m),LB={day:"Le jour affiché",daysm:"Tous les jours de "+lab(m),month:"Bilan de "+lab(m),year:"Bilan de l'année"};let h="";
+if(sc=="all")h+=`<section class="cover"><div style="font-size:64px">🏫</div><h1>Registre d'absences</h1><h2>Collège Tarik · 1re année</h2><p>Année scolaire 2026/2027 · ${LB[ct]}</p><table><thead><tr><th>Classe</th><th>Élèves</th><th>Filles</th><th>Garçons</th></tr></thead><tbody>${CS.map(k=>`<tr><td>1.${k+1}</td><td>${N[k].length}</td><td>${F[k].size}</td><td>${N[k].length-F[k].size}</td></tr>`).join("")}</tbody></table><p>Réalisé par <b>Ismail BOULLOUS</b></p></section>`;
+CS.forEach(k=>{const sec=(t,b)=>h+=`<section><div class="ph">${head(t,k)}</div>${b}</section>`;
+if(ct=="day")sec(dn(days(m).find(x=>x.d==d)),dayTbl(k,m,d));
+else if(ct=="daysm")days(m).forEach(x=>sec(dn(x),dayTbl(k,m,x.d)));
+else if(ct=="month")sec(LB.month,sumTbl(k,m));
+else sec(LB.year,yearTbl(k))});
+$("pa").innerHTML=h;$("dlg").close();document.body.classList.add("all");setTimeout(print,200)}
+});
+window.addEventListener("afterprint",()=>{document.body.classList.remove("all");$("pa").innerHTML=""});
+document.addEventListener("keydown",e=>{if(vw!="day")return;const D=days(m),j=D.findIndex(x=>x.d==d);if(e.key=="ArrowRight"&&j<D.length-1){d=D[j+1].d;render(1)}if(e.key=="ArrowLeft"&&j>0){d=D[j-1].d;render(1)}});
+render(1);
+</script>
+</body>
+</html>
